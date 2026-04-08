@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Khushi Birthday</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:#111;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+background:black;
+padding:15px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:20px;
+font-size:18px;
+text-decoration:none;
+}
+
+/* HERO */
+
+.hero{
+
+height:70vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(to bottom,transparent,#111),
+url("khushi/img1.jpg") center/cover;
+
+}
+
+.hero h1{
+font-size:60px;
+color:white;
+text-shadow:0 0 20px pink;
+}
+
+.button{
+
+padding:15px 35px;
+background:#e50914;
+border:none;
+border-radius:30px;
+font-size:18px;
+color:white;
+cursor:pointer;
+margin-top:20px;
+
+}
+
+/* SLIDESHOW */
+
+.slider{
+
+width:90%;
+margin:auto;
+margin-top:40px;
+overflow:hidden;
+
+}
+
+.slide-track{
+
+display:flex;
+animation:scroll 25s linear infinite;
+
+}
+
+.slide{
+
+width:300px;
+margin:15px;
+border-radius:15px;
+overflow:hidden;
+transition:.4s;
+
+}
+
+.slide img{
+width:100%;
+}
+
+.slide:hover{
+transform:scale(1.2);
+z-index:2;
+}
+
+@keyframes scroll{
+
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+
+}
+
+/* VIDEO */
+
+.video{
+
+text-align:center;
+margin-top:80px;
+
+}
+
+video{
+width:450px;
+max-width:90%;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ANIMATION ELEMENTS */
+
+.petal{
+position:fixed;
+top:-20px;
+font-size:25px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{transform:translateY(-20px)}
+100%{transform:translateY(110vh)}
+}
+
+.bubble{
+position:fixed;
+bottom:-20px;
+width:15px;
+height:15px;
+background:white;
+border-radius:50%;
+opacity:.6;
+animation:bubbleUp linear forwards;
+}
+
+@keyframes bubbleUp{
+
+0%{transform:translateY(0)}
+100%{transform:translateY(-110vh)}
+
+}
+
+.balloon{
+
+position:fixed;
+bottom:-50px;
+font-size:35px;
+animation:balloonUp linear forwards;
+
+}
+
+@keyframes balloonUp{
+video{
+width:450px;
+max-width:90%;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="memories.html">Memories</a>
+<a href="video.html">Video</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Happy Birthday Khushi 🎂</h1>
+
+<button class="button" onclick="startCelebration()">
+
+Click Here to see Magic 🎉
+
+</button>
+
+<p class="message-link" onclick="openMessage()">
+
+</p>
+
+<div id="surpriseBox" class="surprise-box">
+
+
+
+<h1>For Khushi ❤️</h1>
+<h4>
+<p class="note">
+Hey Khushi 🌸  
+Aaj ka din bahut special hai kyunki aaj tum iss duniya me aayi thi.  
+Sach bolu to tum sirf meri sister nahi ho, tum meri life ki smile ho 😊  
+
+Kabhi kabhi hum ladte hain, kabhi masti karte hain,  
+lekin dil se main hamesha chahta hoon ki tum hamesha khush raho.  
+
+Tumhari smile sabse precious gift hai.  
+Aaj ke din bas ek hi wish hai —  
+tumhari life hamesha happiness, success aur pyar se bhari rahe.  
+
+Happy Birthday Khushi 🎂✨  
+</p></h4>
+
+<audio controls>
+<source src="music/music.mp3" type="audio/mp3">
+</audio>
+
+</div>
+
+</section>
+
+
+<!-- SLIDESHOW -->
+
+<div class="slider">
+
+<div class="slide-track">
+
+<div class="slide"><img src="images/1.jpg"></div>
+<div class="slide"><img src="images/10.jpg"></div>
+<div class="slide"><img src="images/11.jpg"></div>
+<div class="slide"><img src="images/eat.jpg"></div>
+<div class="slide"><img src="images/27.jpg"></div>
+<div class="slide"><img src="images/uniform.jpg"></div>
+
+
+<div class="slide"><img src="images/45.jpg"></div>
+<div class="slide"><img src="images/40.jpg"></div>
+<div class="slide"><img src="images/khushi mom.jpg"></div>
+<div class="slide"><img src="images/13.jpg"></div>
+<div class="slide"><img src="images/12.jpg"></div>
+</div>
+
+</div>
+
+
+<!-- VIDEO -->
+
+<div class="video">
+
+<h2>Birthday Video 🎥</h2>
+
+<video controls>
+
+<source src="videos/bday.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+
+<canvas id="fireworks"></canvas>
+
+
+<script>
+
+/* START CELEBRATION */
+
+function startCelebration(){
+
+petals()
+bubbles()
+balloons()
+fireworks()
+
+}
+
+
+/* ROSE PETALS */
+
+function petals(){
+
+for(let i=0;i<40;i++){
+
+let petal=document.createElement("div")
+petal.className="petal"
+petal.innerHTML="🌹"
+
+petal.style.left=Math.random()*100+"%"
+petal.style.animationDuration=3+Math.random()*4+"s"
+
+document.body.appendChild(petal)
+
+setTimeout(()=>petal.remove(),6000)
+
+}
+
+}
+
+
+/* BUBBLES */
+
+function bubbles(){
+
+for(let i=0;i<40;i++){
+
+let b=document.createElement("div")
+
+b.className="bubble"
+
+b.style.left=Math.random()*100+"%"
+b.style.animationDuration=4+Math.random()*4+"s"
+
+document.body.appendChild(b)
+
+setTimeout(()=>b.remove(),6000)
+
+}
+
+}
+
+
+/* BALLOONS */
+
+function balloons(){
+
+for(let i=0;i<20;i++){
+
+let b=document.createElement("div")
+
+b.className="balloon"
+
+b.innerHTML="🎈"
+
+b.style.left=Math.random()*100+"%"
+b.style.animationDuration=5+Math.random()*5+"s"
+
+document.body.appendChild(b)
+
+setTimeout(()=>b.remove(),8000)
+
+}
+
+}
+
+
+/* FIREWORKS */
+
+const canvas=document.getElementById("fireworks")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+function fireworks(){
+
+for(let i=0;i<20;i++){
+
+let x=Math.random()*canvas.width
+let y=Math.random()*canvas.height
+
+ctx.beginPath()
+ctx.arc(x,y,4,0,Math.PI*2)
+ctx.fillStyle="yellow"
+ctx.fill()
+
+}
+
+}
+
+</script>
+
+
+</body>
+</html>         

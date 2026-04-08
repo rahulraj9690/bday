@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Videos</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+}
+
+/* NAVBAR */
+
+nav{
+background:#111;
+padding:15px;
+}
+
+nav a{
+color:white;
+margin:20px;
+font-size:18px;
+text-decoration:none;
+transition:.3s;
+}
+
+nav a:hover{
+color:#ff4d6d;
+}
+
+/* TITLE */
+
+h1{
+margin-top:30px;
+font-size:45px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px white;}
+to{ text-shadow:0 0 30px #ff0066;}
+}
+
+/* VIDEO PLAYER */
+
+.video-player{
+margin-top:30px;
+display:flex;
+justify-content:center;
+}
+
+video{
+width:70%;
+max-width:800px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* VIDEO LIST */
+
+.video-list{
+
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:40px;
+flex-wrap:wrap;
+
+}
+
+.video-card{
+
+background:white;
+color:black;
+padding:10px;
+border-radius:15px;
+width:200px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.video-card:hover{
+transform:scale(1.1);
+}
+
+.video-card img{
+width:100%;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="memories.html">Memories</a>
+<a href="video.html">Video</a>
+<a href="surprise.html">Surprise</a>
+
+</nav>
+
+
+<h1>Special Birthday Videos 🎥</h1>
+
+
+<!-- MAIN VIDEO PLAYER -->
+
+<div class="video-player">
+
+<video id="mainVideo" controls>
+
+<source src="videos/bday.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+
+<!-- VIDEO SELECTION -->
+
+<div class="video-list">
+
+<div class="video-card" onclick="playVideo('videos/bday.mp4')">
+
+<img src="images/pizza.jpg">
+
+<p>Birthday Surprise 🎂</p>
+
+</div>
+
+
+<div class="video-card" onclick="playVideo('videos/Bday11.mp4')">
+
+<img src="images/KR.png">
+
+<p>Memories Video ❤️</p>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+function playVideo(src){
+
+let video=document.getElementById("mainVideo")
+
+video.pause()
+
+video.src=src
+
+video.load()
+
+video.play()
+
+}
+
+</script>
+
+
+</body>
+
+</html>
