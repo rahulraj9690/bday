@@ -91,8 +91,8 @@ bubble.style.animationDuration=(4+Math.random()*3)+"s"
 document.body.appendChild(bubble)
 
 setTimeout(()=>{
-bubble.remove()
-},7000)
+document.getElementById("fireworks").style.display="none";
+},4000)
 
 }
 
